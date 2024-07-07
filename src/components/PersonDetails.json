@@ -1,0 +1,29 @@
+{
+  "users": [
+    {
+      "id": "f918",
+      "first_name": "meri jane",
+      "last_name": "jan",
+      "gender": "meri",
+      "city": "jaan",
+      "firstName": "ddddd",
+      "lastName": "eeee",
+      "name": " ",
+      "password": " "
+    },
+    {
+      "id": "cf27",
+      "first_name": "Mohammad",
+      "last_name": "adnan",
+      "gender": "raza",
+      "city": "etah"
+    },
+    {
+      "id": "ee25",
+      "first_name": "Mohammad",
+      "last_name": "hanif",
+      "gender": "raza",
+      "city": "agra"
+    }
+  ]
+}
