@@ -17,18 +17,48 @@ const GetJsonData = () => {
 
   // console.log(myUser);
 
-  const handleDelete = (id) => {
-    // window.confirm ask for confirmation of deletion
-    const confirm = window.confirm("would you like to delete the user");
-    if (confirm) {
-      axios
-        .delete(`http://localhost:3030/users/` + id)
-        .then((res) => {
-          location.reload(); // reload us to the same page
-        })
-        .catch((err) => console.log(err));
+  const [order, setOrder] = useState("ASC");
+  const [stockOrder, setStockOrder] = useState("ASC");
+
+  const SortAsc = () => {
+    if (order == "ASC") {
+      const sorted = [...myUser].sort((a, b) => {
+        return a.title.localeCompare(b.title);
+      });
+      setMyUser(sorted);
+      setOrder("DSC");
     }
-    console.log(id);
+  };
+
+  const SortDesc = () => {
+    if (order == "DSC") {
+      const sorted = [...myUser].sort((a, b) => {
+        return b.title.localeCompare(a.title);
+      });
+      setMyUser(sorted);
+      setOrder("ASC");
+    }
+  };
+
+  const SortLowest = () => {
+    if (stockOrder == "ASC") {
+      const sorted = [...myUser].sort((a, b) => {
+        return a.my_rating - b.my_rating;
+      });
+      setMyUser(sorted);
+      setStockOrder("DSC");
+    }
+  };
+  const SortHighest = () => {
+    console.log("button clicked");
+    if (stockOrder == "DSC") {
+      const sorted = [...myUser].sort((a, b) => {
+        return b.my_rating - a.my_rating;
+      });
+      console.log(sorted);
+      setMyUser(sorted);
+      setStockOrder("ASC");
+    }
   };
 
   return (
@@ -43,16 +73,24 @@ const GetJsonData = () => {
           </Link>
         </div>
       </div>
-
+      <div className="flex gap-4">
+      <button className="p-2 m-2" onClick={() => SortAsc()}>Sort By Name A to Z</button>
+      <button className="p-2 m-2" onClick={() => SortDesc()}>Sort By Name Z to A</button>
+      <button className="p-2 m-2" onClick={() => SortLowest()}>Low to High Rating</button>
+      <button className="p-2 m-2" onClick={() => SortHighest()}>High to Low Rating</button>
+      </div>
       <div>
         {myUser.map((user, index) => {
           return (
-            <div className="flex justify-between items-center m-2 p-2 " key={index}>
+            <div
+              className="flex justify-between items-center m-2 p-2 "
+              key={index}
+            >
               <div className="flex items-center ">
-              <div className="mx-4">{index + 1}.</div>
-              <div className=" m-2 p-2 ml-8">
-                <SingleCardData {...user} />
-              </div>
+                <div className="mx-4">{index + 1}.</div>
+                <div className=" m-2 p-2 ml-8">
+                  <SingleCardData {...user} />
+                </div>
               </div>
 
               <div className="  m-2 p-2">
@@ -63,8 +101,6 @@ const GetJsonData = () => {
                   Web Series Details
                 </Link>
               </div>
-             
-             
             </div>
           );
         })}
