@@ -45,10 +45,13 @@ const UpdateData = () => {
 
   return (
     <div>
-      <div>
-        <Link to="/">user list</Link>
+       <div className="h-20 text-3xl flex justify-center items-center">
+        Edit Yours Show Details
       </div>
-      <h2>Update your form</h2>
+      <div className=" flex justify-end m-4 ">
+        <Link className="border border-slate-200 p-3 " to="/">Shows List</Link>
+      </div>
+      
       <div>
         <form onSubmit={submitForm}>
           <div>

@@ -33,46 +33,38 @@ const GetJsonData = () => {
 
   return (
     <div>
-     <div>
-     <div className="h-20 text-3xl flex justify-center items-center">
-        Web Shows List
+      <div>
+        <div className="h-20 text-3xl flex justify-center items-center">
+          Shows & Dramas
+        </div>
+        <div className=" flex justify-end m-4 ">
+          <Link className="border border-slate-200 p-3 " to="/form">
+            Add New Show
+          </Link>
+        </div>
       </div>
-      <div className=" flex justify-end m-4 ">
-        <Link className="border border-slate-200 p-3 " to="/form">
-          Add New Show
-        </Link>
-      </div>
-     </div>
 
       <div>
         {myUser.map((user, index) => {
           return (
-            <div className=" border border-slate-200 m-2 p-2 " key={index}>
-              <div className=" border border-slate-200 m-2 p-2 ">
+            <div className="flex justify-between items-center m-2 p-2 " key={index}>
+              <div className="flex items-center ">
+              <div className="mx-4">{index + 1}.</div>
+              <div className=" m-2 p-2 ml-8">
                 <SingleCardData {...user} />
               </div>
+              </div>
 
-              <div className=" border border-slate-200 m-2 p-2">
+              <div className="  m-2 p-2">
                 <Link
-                  className=" border border-slate-200 "
+                  className=" border border-slate-200 p-2 m-2"
                   to={`/read/` + user.id}
                 >
-                  Read
+                  Web Series Details
                 </Link>
               </div>
-              <div className=" border border-slate-200 m-2 p-2">
-                <Link
-                  className=" border border-slate-200 "
-                  to={`/updateForm/` + user.id}
-                >
-                  update user
-                </Link>
-              </div>
-              <div className=" border border-slate-200 m-2 p-2">
-                <button className="" onClick={(e) => handleDelete(user.id)}>
-                  delete
-                </button>
-              </div>
+             
+             
             </div>
           );
         })}
