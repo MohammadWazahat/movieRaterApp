@@ -4,6 +4,7 @@ import AddDataJson from './AddDataJson';
 import GetJsonData from './GetJsonData';
 import UpdateData from './UpdateData';
 import ReadSingleData from './ReadSingleData';
+import TestRedux from './TestRedux/TestRedux';
 
 
 const MyApp = () => {
@@ -24,6 +25,10 @@ const MyApp = () => {
     {
       path : "/read/:id",
       element : <ReadSingleData/> ,
+    },
+    {
+      path : "/testRedux",
+      element : <TestRedux/> ,
     },
 
   ])
